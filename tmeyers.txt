@@ -1,0 +1,22 @@
+1) Your experience with web architecture.  Have you written HTML 
+before?  Written Javascript? Etc.
+
+I have experience developing web applications.  I developed several 
+websites using PHP – some from scratch, some using the Zend Framework, and 
+some based on Wordpress or Drupal.  I also developed ASP.NET and 
+Silverlight applications, and have played around a bit with Ruby on Rails.  
+I also have front-end development experience, including XHTML, CSS, 
+Javascript, and JQuery.
+
+2) What are your favorite features from at least two browsers?
+
+Google Chrome:  I love how easy it is to add a web site to your favorites.  
+In Internet Explorer for example, clicking the star is insufficient – you 
+have to click “Add to Favorites” afterwards.  In Chrome, you just have to 
+click the star once, then you have the option to undo.  I also love Chrome 
+developer tools.  I use it to style my websites; I open my css file in it, 
+and when editing it I can immediately see my styles in effect.
+
+Firefox:  They have great plugins available.  For example, the Rank 
+Checker plugin allows me to see the search engine ranking of each website 
+I’m working on.  I also like Firebug for debugging Javascript.
