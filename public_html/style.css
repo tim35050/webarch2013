@@ -1,0 +1,40 @@
+/* Page Header */
+#header {
+	background: #DDDDDD;
+	font-size: 18px;
+	height: 131px;
+}
+.logo {
+	float: left;
+	padding-right: 10px;
+}
+.site-branding {
+	padding: 10px;
+}
+.site-title {
+	font-weight: bold;
+}
+.site-description {
+	font-style: italic;
+}
+
+/* Page Content */
+#content {
+	margin-top: 20px;
+}
+h1 {
+	font-size: 16px;
+}
+p {
+
+}
+
+/* Page Footer */
+#footer {
+	margin-top: 20px;
+	padding: 10px;
+	background: #EEEEEE;
+	text-align: right;
+}
+
+
