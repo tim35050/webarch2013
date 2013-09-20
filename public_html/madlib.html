@@ -1,40 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Madlib!</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-    </head>
-    <body>
+	<head>
+		<meta charset="utf-8">
+		<title>Tim's Madlib!</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<h1>Welcome to Tim's Madlib Generator!</h1>
+		<p><strong>Instructions:</strong> Complete the form below, then
+		click the "submit" button to construct a Madlib based on your
+		inputs.</p>
 		<form id="madlib-input">
-			<p>Please Input your answers below!</p>
-			<!-- inputs... -->
+			<fieldset>	
+				<ol>
+					<li>
+						<label for="text-name">Your Name</label>
+						<input id="text-name" type="text" />
+					</li>
+					<li>
+						<label for="rb-gender">Your Gender</label>
+						<input id="rb-gender" name="rb-gender" type="radio" value="male" />Male
+						<input id="rb-gender" name="rb-gender" type="radio" value="female" />Female
+					</li>
+					<li>
+						<label for="sel-animal">Favorite Animal</label>
+						<select id="sel-animal">
+							<option value="" type="checkbox">Select</option>
+							<option value="cheetah" type="checkbox">Cheetah</option>
+							<option value="brontosaurus" type="checkbox">Brontosaurus</option>
+							<option value="french poodle" type="checkbox">French Poodle</option>
+							<option value="gorilla" type="checkbox">Gorilla</option>
+							<option value="horse" type="checkbox">Horse</option>
+							<option value="iguana" type="checkbox">Iguana</option>
+							<option value="manatee" type="checkbox">Manatee</option>
+						</select>
+					</li>
+					<li>
+						<label for="cb-foods">Foods you like</label>
+						<input id="cb-foods" type="checkbox" value="chicken" />Chicken
+						<input id="cb-foods" type="checkbox" value="chili" />Chili
+						<input id="cb-foods" type="checkbox" value="mayo" />Mayo
+					</li>
+					<li>
+						<label for="text-number">Your Lucky Number</label>
+						<input id="text-number" type="text" />
+					</li>
+				</ol>
+				<button id="btn-submit" type="submit">Generate</button>
+			</fieldset>
 		</form>
-		
 		<div id="madlib-output">
 		</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<!-- Optionally include other scripts
-        <script src="js/main.js"></script>
-		-->
-
-        <!-- You may add Javascript functions below -->
-        <script>
-			function validate() {
-				if ($("input:first").val() == "correct") {
-					$("#madlib-output").text("input: correct");
-				} else {
-					alert("Error!");
-				}
-				return false;
-			}
-
-			$(document).ready(function() {
-				$("#madlib-input").submit(validate);
-				console.log("ready!");
-			});
-        </script>
-    </body>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+    	<script src="js/main.js"></script>
+	</body>
 </html>
