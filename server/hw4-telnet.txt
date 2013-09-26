@@ -1,0 +1,46 @@
+INFO 253
+HW 4 – Telnet
+Timothy Meyers
+
+1. Using 127.0.0.1 $FLASK_PORT
+1.1	What is the return code for GET /home HTTP/1.1?
+
+200 OK
+
+1.2	What is the return code for GET /wiki HTTP/1.1?
+
+302 FOUND
+
+1.2.1	What is the next HTTP statement a browser would send after this 
+return code?
+
+The response contains a location field with value en.wikipedia.org.  The 
+browser will send another GET request for the / directory in host 
+en.wikipedia.org.  It would look something like:
+GET / HTTP/1.1
+Host: en.wikipedia.org
+
+3.	What is the return code for PUT /wiki HTTP/1.1?
+
+405 METHOD NOT ALLOWED
+
+2.	Explain what happens when your browser loads 
+http://people.ischool.berkeley.edu/~<USER>/server/wiki from sending the 
+request to loading HTML
+
+The browser first makes an HTTP GET request for directory 
+/~tmeyers/server/wiki on host people.ischool.berkeley.edu.  Berkeley’s 
+proxy server runs ~tmeyers/server/app.py to determine the port to redirect 
+the request to.  It finds port 63025, and redirects the request to 
+localhost: 63025/wiki.  The response code is a 302 redirect, and the 
+server resends a GET request to get the root folder located on host 
+en.wikipedia.org.  The server generates an HTML file and returns it.  The 
+browser parses the HTML file and makes additional GET requests for every 
+file referenced in the HTML.  The browser renders the page using the 
+received HTML, images, stylesheets and javascript files.
+
+3.	What is the return code for 
+http://people.ischool.berkeley.edu/~<USER>/server/ ?
+
+The request can be made using the following command: GET / HTTP/1.1.  The 
+return code is: 404 NOT FOUND
