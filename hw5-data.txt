@@ -1,0 +1,64 @@
+INFO 253
+HW 5 – Data
+Timothy Meyers
+
+1.	What HTTP command is used to make the /home resource respond with 
+your full name (including spaces), the title of the page should be the 
+full title of this class.
+
+GET request.  See my changes here: 
+http://people.ischool.berkeley.edu/~tmeyers/server/home
+
+2.	Use a PUT request to set the redirect target of 
+http://people.ischool.berkeley.edu/~tmeyers/server/wiki
+
+PUT /wiki HTTP/1.1
+Host: localhost
+Content-Length: 23
+Content-Type: application/x-www-form-urlencoded
+
+url=http://berkeley.edu
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 34
+Server: Werkzeug/0.8.3 Python/2.7.3
+Date: Thu, 03 Oct 2013 06:58:15 GMT
+
+Stored wiki => http://berkeley.edu
+
+I verify this change in two ways.  First, there is a confirmation message 
+“Stored wiki => http://berkeley.edu that the server sends me, confirming 
+that my url value was received and stored.  Second, when I navigate to 
+http://people.ischool.berkeley.edu/~tmeyers/server/wiki, I am successfully 
+redirected to http://berkeley.edu.
+
+3. Use a POST to update the redirect target of 
+http://people.ischool.berkeley.edu/~<USER>/server/wiki to another new 
+location.
+
+POST /wiki HTTP/1.1
+Host: localhost
+Content-Length: 18
+Content-Type: application/x-www-form-urlencoded
+
+url=http://ted.com
+HTTP/1.0 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 29
+Server: Werkzeug/0.8.3 Python/2.7.3
+Date: Fri, 04 Oct 2013 03:42:19 GMT
+
+Stored wiki => http://ted.com
+
+4.	Update app.py to correctly return an image from 
+http://people.ischool.berkeley.edu/~<USER>/server/i253
+a.	Use your browser to test
+
+It works!  http://people.ischool.berkeley.edu/~tmeyers/server/i253 shows 
+an image with text “My friend Jim said i253 was fun”.
+
+b.	Including the Content-Type in your submission
+
+I uncommented and completed the following line in app.py:
+resp.headers[‘Content-Type’] = ‘image/png’
+
