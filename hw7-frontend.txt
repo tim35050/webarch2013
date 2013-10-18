@@ -4,7 +4,7 @@ Timothy Meyers
 
 What’s the diﬀerence between Yelp’s homepage compressed and uncompressed?
 
-Instructions
+Instructions:
 
 Use curl - downloads items from internet
 •	man curl to get help
