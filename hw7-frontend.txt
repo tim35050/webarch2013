@@ -1,0 +1,34 @@
+INFO253
+HW7: Front End Performance
+Timothy Meyers
+
+What’s the diﬀerence between Yelp’s homepage compressed and uncompressed?
+
+Instructions:
+
+Use curl - downloads items from internet
+•	man curl to get help
+o	-v: provide verbose output
+o	-H: specify HTTP headers
+o	>: redirect command output to ﬁle
+
+harbinger:~$ curl http://www.yelp.com --output /dev/null
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  
+Current
+                                 Dload  Upload   Total   Spent    Left  
+Speed
+100 87653  100 87653    0     0   165k      0 --:--:-- --:--:-- --:--:--  
+168k
+
+harbinger:~$ curl http://www.yelp.com -H "Accept-Encoding: gzip,deflate" 
+--output /dev/null
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  
+Current
+                                 Dload  Upload   Total   Spent    Left  
+Speed
+100 18589    0 18589    0     0  50726      0 --:--:-- --:--:-- --:--:-- 
+52216
+
+Uncompressed, Yelp's home page is 87653 bytes.  Compressed, Yelp's home 
+page is 18589 bytes.  Therefore, the difference is 69064 bytes, and the 
+compressed file is less than one quarter of the size.
