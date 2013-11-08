@@ -1,0 +1,43 @@
+mysql> select count(long_url) from links where created > '2013-10-14';
++-----------------+
+| count(long_url) |
++-----------------+
+|              11 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select count(long_url) from links where created < '2013-10-14' and 
+hit_count < 40;
++-----------------+
+| count(long_url) |
++-----------------+
+|               9 |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> insert into links values 
+('http://tim-meyers.com','tim','23','2013-11-07');
+Query OK, 1 row affected (0.00 sec)
+
+It is impossible for someone to see my partially-complete insert.  
+That is because MySQL has the ACID properties, which include isolation.  
+Isolation ensures that all queries to the database are 'isolated' such 
+that people searching can't access the values of the people who are in the 
+process of inserting.  Only after an insert is complete will those new 
+values be accessible to everyone.  It is part of concurrency control, 
+which prevents people from performing conflicting actions on the same 
+database.
+
+mysql> update links set hit_count = hit_count + 1 where long_url = 
+'http://tim-meyers.com';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from links where long_url='http://tim-meyers.com';
++-----------------------+-----------+-----------+------------+
+| long_url              | short_url | hit_count | created    |
++-----------------------+-----------+-----------+------------+
+| http://tim-meyers.com | tim       |        24 | 2013-11-07 |
++-----------------------+-----------+-----------+------------+
+1 row in set (0.01 sec)
+
