@@ -24,4 +24,3 @@ Host: www.example.com
 Content-length: 32
 Content-type: text/urlencoded
 name=Timothy%20Meyers&class=i253
-
