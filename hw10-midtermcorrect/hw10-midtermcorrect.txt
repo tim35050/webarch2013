@@ -1,0 +1,27 @@
+Timothy Meyers
+INFO 253 – Web Architecture
+HW10 – Midterm Correct
+
+Question 7:
+
+By default, forms use a get method. 
+http://example.com/app/user/search.html?name=Jim%20Blomo&gender=male
+
+Question 14:
+
+Ensures a packet reached its destination by requiring the receiver to send 
+back an acknowledgement.
+
+Question 15:
+
+SSH uses IP: True
+SSH uses UDP: True
+
+Question 18:
+
+PUT /student HTTP/1.1
+Host: www.example.com
+Content-length: 32
+Content-type: text/urlencoded
+name=Timothy%20Meyers&class=i253
+
