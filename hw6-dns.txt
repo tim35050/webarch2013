@@ -1,0 +1,86 @@
+INFO253
+HW6-DNS
+Timothy Meyers
+
+1.	What series of IPs would a recursive DNS server use to find the 
+address of m.yelp.com?
+
+It would first take an IP for an authoritative server: 199.7.83.42.
+
+host -v m.yelp.com 199.7.83.42
+
+The response for the above request contains the following section:
+
+;; ADDITIONAL SECTION:
+a.gtld-servers.net.	172800	IN	A	192.5.6.30
+b.gtld-servers.net.	172800	IN	A	192.33.14.30
+c.gtld-servers.net.	172800	IN	A	192.26.92.30
+d.gtld-servers.net.	172800	IN	A	192.31.80.30
+e.gtld-servers.net.	172800	IN	A	192.12.94.30
+f.gtld-servers.net.	172800	IN	A	192.35.51.30
+g.gtld-servers.net.	172800	IN	A	192.42.93.30
+h.gtld-servers.net.	172800	IN	A	192.54.112.30
+i.gtld-servers.net.	172800	IN	A	192.43.172.30
+j.gtld-servers.net.	172800	IN	A	192.48.79.30
+k.gtld-servers.net.	172800	IN	A	192.52.178.30
+l.gtld-servers.net.	172800	IN	A	192.41.162.30
+m.gtld-servers.net.	172800	IN	A	192.55.83.30
+a.gtld-servers.net.	172800	IN	AAAA	2001:503:a83e::2:30
+
+The recursive DNS server would then use the first IP contained in the 
+response: 192.5.6.30
+
+host -v m.yelp.com 192.5.6.30
+
+The following IPs are contained in the response:
+;; ADDITIONAL SECTION:
+ns1.p18.dynect.net.	172800	IN	A	208.78.70.18
+ns3.p18.dynect.net.	172800	IN	A	208.78.71.18
+ns2.p18.dynect.net.	172800	IN	A	204.13.250.18
+ns4.p18.dynect.net.	172800	IN	A	204.13.251.18
+
+The recursive DNS server would then use the first IP contained in the 
+response: 208.78.70.18
+
+host -v m.yelp.com 208.78.70.18
+
+;; ANSWER SECTION:
+m.yelp.com.		60	IN	A	199.255.189.234
+m.yelp.com.		60	IN	A	199.255.189.34
+m.yelp.com.		60	IN	A	198.51.132.34
+m.yelp.com.		60	IN	A	198.51.132.234
+
+The recursive DNS server finds the final IPs of m.yelp.com.
+
+2.	What are the IP addresses of m.yelp.com?
+
+The IP addresses were found at the end of the previous section, but can 
+determined directly with the following command:
+
+host m.yelp.com
+
+m.yelp.com has address 199.255.189.234
+m.yelp.com has address 198.51.132.234
+m.yelp.com has address 198.51.132.34
+m.yelp.com has address 199.255.189.34
+
+3.	Do IP packets leave the Berkeley network when traveling to 
+amplab.cs.berkeley.edu? Include the command and output.
+
+traceroute amplab.cs.berkeley.edu
+traceroute to amplab.cs.berkeley.edu (128.32.37.248), 30 hops max, 60 byte 
+packets
+ 1  g3-35.inr-211-srb.Berkeley.EDU (128.32.78.3)  0.984 ms  0.965 ms  
+0.967 ms
+ 2  t6-1.inr-202-reccev.Berkeley.EDU (128.32.255.126)  0.976 ms  1.027 ms  
+1.047 ms
+ 3  evans-eecs-br-10GE.EECS.Berkeley.EDU (128.32.255.54)  2.022 ms  2.025 
+ms  2.032 ms
+ 4  soda-10g-edge.EECS.Berkeley.EDU (169.229.59.242)  2.766 ms  2.829 ms  
+3.858 ms
+ 5  www-research2.CS.Berkeley.EDU (128.32.37.248)  1.671 ms !X  1.772 ms 
+!X  1.818 ms !X
+
+The packets traverse 5 different routers that each have berkeley.edu in 
+their domain name, so the IP packets never leave the Berkeley network.
+
